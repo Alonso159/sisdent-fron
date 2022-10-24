@@ -13,7 +13,7 @@ Vue.config.productionTip = false
 Vue.use(VueSweetalert2);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
-axios.defaults.baseURL = "http://localhost:53170/api";
+axios.defaults.baseURL = "http://localhost:40650/api";
 
 axios.interceptors.request.use(config => {
 
