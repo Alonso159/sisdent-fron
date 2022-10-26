@@ -13,8 +13,10 @@ Vue.config.productionTip = false
 Vue.use(VueSweetalert2);
 Vue.use(Vuelidate);
 Vue.use(VueAxios, axios);
-axios.defaults.baseURL = "http://localhost:40650/api";
 
+const BaseUrl = "http://localhost:40650"
+axios.defaults.baseURL = `${BaseUrl}/api`;
+Vue.prototype.$httpRequest = BaseUrl;
 axios.interceptors.request.use(config => {
 
     if (localStorage.getItem("token")) {
