@@ -1,5 +1,4 @@
 <template>
-  <hello-world />
 </template>
 
 <script>
@@ -10,15 +9,17 @@ import axios from "axios";
   export default {
     name: 'Home',
     async created() {
+
     this.obtieneInfoCronogramaCreado();
   },
     methods:{
         async obtieneInfoCronogramaCreado(){
-          const res=[];
+          
+       
        await axios
         .get("/ControllerCita/GetAllCitas")
         .then((x) => {
-          
+          console.log(x.data)
         })
         .catch((err) => console.log(err));
       

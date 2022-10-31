@@ -1,5 +1,7 @@
 <template>
-  
+  <div id="pagePrincipal">
+    
+  </div>
 </template>
 
 <script>
