@@ -32,10 +32,11 @@
         ...mapActions("Authentication",['fetchUser','tryAutoLogin'])
       },
       async created() {
+      
         await this.setGlobIdProjectWhenStart();  
         this.tryAutoLogin();        
         this.fetchUser();            
-        console.log("idProyecto: " + this.GlobIdProject)
+      
       },
       computed:{
         ...mapGetters("Global",["GlobIdProject"])

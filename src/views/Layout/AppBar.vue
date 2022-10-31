@@ -65,15 +65,7 @@
         </template>
       </notification-drawer>
 
-      <template v-slot:append>
-        <div class="my-4 mx-4">
-          <base-hover-button
-            text="Ver todas las notificaciones"
-            block
-            bg-color="bg-blue-200"
-          />
-        </div>
-      </template>
+      
     </v-navigation-drawer>
   </div>
 </template>
@@ -116,7 +108,7 @@ export default {
   async created() {
     await this.ObtenerNotificaciones();
     // Listen to question hub coming from SignalR events
-    this.$notificationHub.$on("notification-added", this.onNotificationAdded);  
+    //this.$notificationHub.$on("notification-added", this.onNotificationAdded);  
   },
   methods: {
     ...mapActions([
@@ -125,7 +117,7 @@ export default {
     async ObtenerNotificaciones() {
       const requestParams = new URLSearchParams();
       requestParams.append('usuarioReceptor', true);
-      await axios
+     /* await axios
         .get("/Notificaciones/GetNotifByUsuario", { params: requestParams } )
         .then((res) => {
           console.log(res.data);
@@ -134,7 +126,7 @@ export default {
         })
         .catch((err) => {
           console.error(err);
-        });
+        });*/
     },
     onNotificationAdded(idUsuario, notification) {
       if(idUsuario == this.user.infoUser.id){
@@ -175,14 +167,14 @@ export default {
       }
       this.cont++;
       console.log("antes de enviar la notificacion")
-      await axios
+      /*await axios
         .post("/Notificaciones/SendNotificacion", bodyRequest )
         .then((res) => {
           this.$notificationHub.sendNotification("users_logged", res.data);
         })
         .catch((err) => {
           console.error(err);
-        });
+        });*/
     }
   },
   computed:{

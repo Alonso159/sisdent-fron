@@ -1,4 +1,5 @@
 <template>
+  <h1>aaaaaaaaaaaa</h1>
 </template>
 
 <script>
@@ -7,24 +8,7 @@ import axios from "axios";
 
   export default {
     name: 'Home',
-    async created() {
-
-    this.obtieneInfoCronogramaCreado();
-  },
-    methods:{
-        async obtieneInfoCronogramaCreado(){
-          
-       
-       await axios
-        .get("/ControllerCita/GetAllCitas")
-        .then((x) => {
-          console.log(x.data)
-        })
-        .catch((err) => console.log(err));
-      
-
-   }
-    },
+    
     components: {
       HelloWorld,
     },

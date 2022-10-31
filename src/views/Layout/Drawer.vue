@@ -89,7 +89,8 @@ export default {
   },
   async created(){
     await this.fetchUser();
-    this.$notificationHub.sessionOpened("users_logged");
+    
+    //this.$notificationHub.sessionOpened("users_logged");
   },
   computed: {
     ...mapGetters(["getThemeMode"]),
@@ -98,7 +99,7 @@ export default {
     computedItems() {
       // return this.items.map(this.mapItem);
       let permisos = [];
-      if(this.user){
+   /*   if(this.user){
         if(this.user.isCliente){
           permisos = itemsCliente;
         }else{
@@ -107,7 +108,7 @@ export default {
         }
         // console.log(this.items);
         // return this.items;
-      }
+      }*/
       return permisos;
     },
     TituloUsuario(){

@@ -3,11 +3,11 @@
     <v-col cols="12" md="12" lg="8">
       <v-row>
         <v-col cols="12">
-          <base-card class="px-4 pt-4">
+          <v-card class="px-4 pt-4">
             <v-row>
               <v-col cols="12" sm="6" md="6">
                 <v-card-title class="pb-0 mb-2"
-                  >¡Bienvenido de vuelta, {{this.user.infoUser.datos.nombre}}!</v-card-title
+                  >¡Bienvenido de vuelta, !</v-card-title
                 >
                 <v-card-text class="pb-0">
                   <p class="body-2">
@@ -19,24 +19,19 @@
               </v-col>
               <v-col cols="12" sm="6" md="6">
                 <v-card-text class="pa-0">
-                  <apexchart
-                    type="radialBar"
-                    :options="welcomeProgressChart.chartOptions"
-                    :series="welcomeProgressChart.series"
-                    height="250"
-                  />
+                 
                 </v-card-text>
               </v-col>
             </v-row>
-          </base-card>
+          </v-card>
         </v-col>
         <v-col cols="12" md="9">
-          <base-card>
+          <v-card>
             <v-card-title class="justify-space-between">
               <div class="card-title ma-0">Mis Proyectos</div>
               <v-btn text small color="primary"> Ver todos </v-btn>
             </v-card-title>
-          </base-card>
+          </v-card>
         </v-col>
         <v-col cols="12" md="3">
           <DashboardNewProjectCard
@@ -47,7 +42,7 @@
           />
         </v-col>
         <v-col cols="12">
-          <base-card>
+          <v-card>
             <v-simple-table>
               <template v-slot:default>
                 <thead>
@@ -60,7 +55,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr
+                  <!--<tr
                     v-for="item in ListProyecto"
                     :key="item.codigo"
                     style="line-height: 4"
@@ -88,14 +83,14 @@
                         <v-icon>mdi-play</v-icon>
                       </v-btn>
                     </td>
-                  </tr>
+                  </tr>-->
                 </tbody>
               </template>
             </v-simple-table>
-          </base-card>
+          </v-card>
         </v-col>
         <v-col cols="12" md="6">
-          <base-card>
+          <v-card>
             <v-card-title class="justify-space-between">
               <div class="card-title ma-0">Últimas Actividades</div>
               <v-btn text small color="primary"> Ver todos </v-btn>
@@ -223,20 +218,15 @@
                 </div>
               </div>
             </v-card-text>
-          </base-card>
+          </v-card>
         </v-col>
         <v-col cols="12" md="6">
-          <base-card>
+          <v-card>
             <v-card-title>Proyectos vs tareas</v-card-title>
             <v-card-text>
-              <apexchart
-                type="bar"
-                height="340"
-                :options="this.datachart.chartOptions"
-                :series="this.datachart.series"
-              />
+              
             </v-card-text>
-          </base-card>
+          </v-card>
         </v-col>
       </v-row>
     </v-col>
@@ -245,7 +235,7 @@
       <v-row>
         <!--
           <v-col cols="12" md="12">
-            <base-card>
+            <v-card>
               <v-card-text class>
                 <v-sheet
                   color="grey lighten-5"
@@ -263,11 +253,11 @@
                   </p>
                 </v-sheet>
               </v-card-text>
-            </base-card>
+            </v-card>
           </v-col>
         -->
         <v-col cols="12" md="12">
-          <base-card>
+          <v-card>
             <v-card-text class>
               <div class="mb-5">
                 <v-card-title class="justify-space-between px-0 pt-0 pb-3">
@@ -314,10 +304,10 @@
                 </v-list-item>
               </div>
             </v-card-text>
-          </base-card>
+          </v-card>
         </v-col>
         <v-col cols="12" md="12">
-          <base-card>
+          <v-card>
             <v-card-text class>
               <div class="mb-10">
                 <v-card-title class="justify-space-between px-0 pt-0 pb-3">
@@ -349,7 +339,7 @@
                 </v-list-item>
               </div>
             </v-card-text>
-          </base-card>
+          </v-card>
         </v-col>
       </v-row>
     </v-col>
@@ -363,7 +353,7 @@ import {
 } from "@/data/DashboardManagement/WelcomeProgressChart";
 import axios from "axios";
 import { mapGetters, mapActions } from "vuex";
-import { mounted } from "vue2-dropzone";
+
 export default {
   name: "DashboardManagement",
   metaInfo: {
@@ -433,11 +423,12 @@ export default {
       ],
     };
   },
-  async created() {
+  async created(){
+    console.log("DASHBOARD")
     //await this.fetchUser();
-    await this.obtenerProyectos();
-    await this.obtenerProyectosVSTareas();
-    await this.ObtenerHitos();
+    //await this.obtenerProyectos();
+    //await this.obtenerProyectosVSTareas();
+   // await this.ObtenerHitos();
   },
   methods: {
     ...mapActions("Authentication", ["fetchUser"]),
@@ -445,7 +436,7 @@ export default {
     ...mapActions("Proyecto", ["setListaProyectos"]),
     ...mapActions("Proyecto", ["setListaProyectos_vs_Tareas"]),
 
-    async obtenerProyectos() {
+   /* async obtenerProyectos() {
       await axios
         .get("/Proyecto/ListaProyectos_Analista")
         .then((res) => {
@@ -459,8 +450,8 @@ export default {
         .finally(() => {
           this.isLoadingTable = false;
         });
-    },
-    async obtenerProyectosVSTareas() {
+    },*/
+ /*   async obtenerProyectosVSTareas() {
       await axios
         .get("/Proyecto/ListaProyectosConTareasPorEstado")
         .then((res) => {
@@ -540,8 +531,8 @@ export default {
         .finally(() => {
           this.isLoadingTable = false;
         });
-    },
-    async ObtenerHitos(){
+    },*/
+  /*  async ObtenerHitos(){
        await axios
         .get("/Cronograma/Get_CronogramaxHitos?days=90")
         .then((res) => {
@@ -551,14 +542,13 @@ export default {
         .catch((err) => {
           console.log(err)
         })
-    },
+    },*/
     setGlobProject(idProyecto) {
       this.setGlobIdProject(idProyecto);
     },
   },
   computed: {
-    ...mapGetters("Proyecto", ["ListProyecto"]),
-    ...mapGetters("Proyecto", ["ListProyecto_vs_Tarea"]),
+   
     ...mapGetters("Global", ["GlobIdProject"]),
     ...mapGetters("Authentication", ["user"]),
   },
