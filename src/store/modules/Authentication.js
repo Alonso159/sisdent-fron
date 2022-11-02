@@ -127,11 +127,11 @@ const actions = {
     localStorage.removeItem("glob_id_project");
     localStorage.removeItem("GlobProyecto");
 
-  //  (isCliente === 'true') ? router.replace('/cliente/login') : router.replace('/login');
+    (isCliente === 'true') ? router.replace('/cliente/login') : router.replace('/login');
   },
   async fetchUser ({ commit, state }, userData) {
     const isCliente = localStorage.getItem("esCliente")
-   /* await axios
+    await axios
       .get(`/Account/user?isCliente=${isCliente}`)
       .then((res) => {
         commit("setUser", res.data);
@@ -147,8 +147,8 @@ const actions = {
         localStorage.removeItem("expirationDate");
         localStorage.removeItem("glob_id_project");
         localStorage.removeItem("GlobProyecto");
-      //  (isCliente === 'true') ? router.replace('/cliente/login') : router.replace('/login');
-      });*/
+        (isCliente === 'true') ? router.replace('/cliente/login') : router.replace('/login');
+      });
   },
   indirectLogIn: ({ commit, dispatch }, userData) => {
     commit("setLoading", true);
