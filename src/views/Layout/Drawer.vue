@@ -77,7 +77,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
-import { items, itemsCliente } from "../../data/Navigation/navigationThree";
+import { items } from "../../data/Navigation/navigationThree";
 export default {
   data() {
     return {
@@ -99,16 +99,13 @@ export default {
     computedItems() {
       // return this.items.map(this.mapItem);
       let permisos = [];
-   /*   if(this.user){
-        if(this.user.isCliente){
-          permisos = itemsCliente;
-        }else{
+     if(this.user){
           let permisosTemp = this.user.infoUser.permisos_usuario;
           permisos = (this.GlobIdProject) ? permisosTemp.map(this.mapItem) : permisosTemp;
-        }
+        
         // console.log(this.items);
         // return this.items;
-      }*/
+      }
       return permisos;
     },
     TituloUsuario(){

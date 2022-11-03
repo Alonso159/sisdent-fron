@@ -1,5 +1,5 @@
 <template>
-  <base-item-group-two no-action sub-group :item="item" class="" />
+ 
 </template>
 
 <script>

@@ -131,14 +131,17 @@ const actions = {
   },
   async fetchUser ({ commit, state }, userData) {
     const isCliente = localStorage.getItem("esCliente")
-    await axios
+
+    commit("setTypeUser", {
+      nameSis: "Portal del Sistema",
+      type:  "Trabajador"
+    })
+  
+ /*   await axios
       .get(`/Account/user?isCliente=${isCliente}`)
       .then((res) => {
-        commit("setUser", res.data);
-        commit("setTypeUser", {
-          nameSis: (res.data.isCliente) ? "Portal del Cliente" : "Portal del Sistema",
-          type: (res.data.isCliente) ? "Cliente" : "Trabajador"
-        });
+        commit("setUser", res.data)
+        
       })
       .catch((error) => {
         console.log(error);
@@ -147,8 +150,8 @@ const actions = {
         localStorage.removeItem("expirationDate");
         localStorage.removeItem("glob_id_project");
         localStorage.removeItem("GlobProyecto");
-        (isCliente === 'true') ? router.replace('/cliente/login') : router.replace('/login');
-      });
+       // (isCliente === 'true') ? router.replace('/cliente/login') : router.replace('/login');
+      });*/
   },
   indirectLogIn: ({ commit, dispatch }, userData) => {
     commit("setLoading", true);
@@ -156,8 +159,7 @@ const actions = {
     axios
       .post("/Account/login", userData)
       .then((res) => {
-        //console.log("userData");
-        //console.log(userData);
+        console.log("AQUI ESTAMOS")
         commit("setLoading", false);
 
         /* Para obtener la cantidad total de milisegundos en la cual se va usar para el deslogue automático */
